@@ -472,13 +472,10 @@ def compile(expr, pset):
         # function of SymPy 0.6.6.
         args = ",".join(arg for arg in pset.arguments)
         code = "lambda {args}: {code}".format(args=args, code=code)
-
     try:
-
         return eval(code, pset.context, {})
     except MemoryError:
         _, _, traceback = sys.exc_info()
-        assert (Temperature >= 0),"Colder than absolute zero!"
         raise MemoryError, ("DEAP : Error in tree evaluation :"
                             " Python cannot evaluate a tree higher than 90. "
                             "To avoid this problem, you should use bloat control on your "
